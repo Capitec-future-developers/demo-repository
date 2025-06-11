@@ -253,20 +253,67 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Display the logged-in user
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    if (currentUser) {
-        document.getElementById('display-username').textContent = currentUser.name;
-        document.querySelectorAll('.profile-Name').forEach(el => el.textContent = currentUser.name);
-        document.querySelector('.popup-header').textContent = currentUser.email;
-    } else {
-        // If no user is logged in, redirect back to login
-        window.location.href = "Login.html";
-    }
+    document.addEventListener('DOMContentLoaded', async () => {
+        const token = sessionStorage.getItem('token');
 
-    // Rest of your initialization code...
-});</script>
+        if (!token) {
+            window.location.href = 'Login.html';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/user', {
+                headers: {
+                    'x-auth-token': token
+                }
+            });
+
+            const user = await response.json();
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+
+            // Display user info
+            document.getElementById('display-username').textContent = user.name;
+            document.querySelectorAll('.profile-Name').forEach(el => el.textContent = user.name);
+            document.querySelector('.popup-header').textContent = user.email;
+
+            // Load accounts data
+            await loadAccounts();
+        } catch (err) {
+            console.error(err);
+            window.location.href = 'Login.html';
+        }
+    });
+
+    async function loadAccounts() {
+        try {
+            const token = sessionStorage.getItem('token');
+            const response = await fetch('http://localhost:5000/api/accounts', {
+                headers: {
+                    'x-auth-token': token
+                }
+            });
+
+            const accounts = await response.json();
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch accounts');
+            }
+
+            // Update the accounts display
+            const accountsContainer = document.querySelector('.box1 .account-details');
+            if (accounts.length > 0) {
+                accountsContainer.innerHTML = `
+        <span class="account-name">${accounts[0].accountType} Account</span>
+        <span class="account-balance">R${accounts[0].balance.toFixed(2)}</span>
+      `;
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };</script>
 <script src="Transfer.js" defer></script>
 <script src="Apps.js" defer></script>
 <script src="Combined.js" defer></script>
