@@ -1,8 +1,18 @@
-![Auto Assign](https://github.com/Capitec-future-developers/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
+Business Banking Client Viewing Options:
 
-![Proof HTML](https://github.com/Capitec-future-developers/demo-repository/actions/workflows/proof-html.yml/badge.svg)
+Multi-platform access (Mobile & PC/Laptop)
 
-# Welcome to your organization's demo respository
-This code repository (or "repo") is designed to demonstrate the best GitHub has to offer with the least amount of noise.
+Client perspective display - See exactly what they see
 
-The repo includes an `index.html` file (so it can render a web page), two GitHub Actions workflows, and a CSS stylesheet dependency.
+Product familiarity - Understand banking services thoroughly
+
+Efficiency boost - Increase productivity
+
+Reduce confusion - Eliminate cluelessness in operations
+
+Key Benefits:
+✓ Seamless cross-device experience
+✓ Improved service through client POV
+✓ Better product knowledge = better support
+✓ Streamlined workflows
+✓ Minimized operational misunderstandings
