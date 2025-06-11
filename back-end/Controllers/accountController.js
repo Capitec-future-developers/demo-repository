@@ -1,6 +1,6 @@
-const Account = require('../models/Account');
-const User = require('../models/User');
-const Transaction = require('../models/Transaction');
+const Account = require('../models/account');
+const User = require('../models/user');
+const Transaction = require('../models/transaction');
 
 // @desc    Get all accounts for a user
 // @route   GET /api/accounts

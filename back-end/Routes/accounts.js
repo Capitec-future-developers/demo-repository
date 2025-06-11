@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAccounts, getAccount, createAccount } = require('../back-end/Controllers/accountController');
+const { getAccounts, getAccount, createAccount } = require('../Controllers/accountController');
 const auth = require('../middlewares/auth');
 
 router.get('/', auth, getAccounts);
